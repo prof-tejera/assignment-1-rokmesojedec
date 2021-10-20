@@ -30,14 +30,16 @@ function App() {
   ];
 
   return (
-    <Timers>
+    <div className="grid">
+      <div class="col-span-122">
       {timers.map((timer) => (
         <Timer>
           <TimerTitle>{timer.title}</TimerTitle>
           {timer.C}
         </Timer>
       ))}
-    </Timers>
+      </div>
+    </div>
   );
 }
 
