@@ -2,8 +2,10 @@ import { Component } from 'react';
 import { Duration } from '../../../utils/helpers';
 import './DisplayTime.scss';
 import TimeComponent from '../TimeComponent/TimeComponent';
+import PropTypes from 'prop-types';
 
 class DisplayTime extends Component {
+
   state = {
     years: 0,
     months: 0,
@@ -14,34 +16,58 @@ class DisplayTime extends Component {
     milliseconds: 0
   };
 
-  constructor() {
-    super();
-    const test = new Duration({ minutes: 0, seconds: 30, tickSize: Duration.TIME_ENUM.MILLISECOND * 64 });
-    const CountDown = setInterval(() => {
-      test.tick();
-      this.setState({
-        years: test.years,
-        months: test.months,
-        days: test.days,
-        hours: test.hours,
-        minutes: test.minutes,
-        seconds: test.seconds,
-        milliseconds: test.milliseconds
-      });
-      if (test.done) clearInterval(CountDown);
-    }, Duration.TIME_ENUM.MILLISECOND * 64);
-  }
 
+  componentDidMount() {
+    const { duration } = this.props;
+
+    if (duration && !this.countdownInterval) {
+      this.countdownInterval = setInterval(() => {
+        duration.tick();
+        this.setState({
+          years: duration.years,
+          months: duration.months,
+          days: duration.days,
+          hours: duration.hours,
+          minutes: duration.minutes,
+          seconds: duration.seconds,
+          milliseconds: duration.milliseconds
+        });
+        if (duration.done) clearInterval(this.countdownInterval);
+      }, duration.tickSize);
+    }
+  }
 
   render() {
-    const components = ["years", "months", "days", "hours", "minutes", "seconds", "milliseconds"];
+    const { className } = this.props;
 
-    return <div>
-      {["years", "months", "days", "hours", "minutes", "seconds", "milliseconds"].map(component => 
-        <TimeComponent value={this.state[component]} label={component}></TimeComponent>)}
- 
+    const components = [
+      // { label: "Y", prependZero: false, name: "years" },
+      // { label: "M", prependZero: false, name: "months" },
+      // { label: "D", prependZero: false, name: "days" },
+      { label: "h", prependZero: true, name: "hours" },
+      { label: "m", prependZero: true, name: "minutes" },
+      { label: "s", prependZero: true, name: "seconds" },
+      { label: "ms", prependZero: true, name: "milliseconds" }
+    ]
+
+    return <div className={['time-components', className].join(" ")}>
+      {components.map((component, i) =>
+        <TimeComponent value={this.state[component.name]}
+          key={component.label}
+          label={component.label}
+          prependZero={component.prependZero}
+          showColon={i !== 0 }></TimeComponent>)}
     </div>;
   }
+}
+DisplayTime.propTypes = {
+  duration: PropTypes.instanceOf(Duration),
+  className: PropTypes.string
+}
+
+DisplayTime.defaultProps = {
+  duration: new Duration(0),
+  className: null
 }
 
 export default DisplayTime;

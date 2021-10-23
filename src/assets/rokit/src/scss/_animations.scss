@@ -9,7 +9,7 @@
 @mixin animation-step($name, $startRuleMap, $endRuleMap, $level, $animation-length: 0.4s, $delay-increment: 0.3)
 {
     @keyframes #{$name}-delay-#{$level} {
-        $percentage: math.floor((($level / (($animation-length / 1s) + $level))) * 100%);
+        $percentage: math.floor((math.div($level, math.div($animation-length, 1s) + $level)) * 100%);
         from {
             @include map-to-rules($startRuleMap);
             animation-timing-function: cubic-bezier(0.6, 0.045, 0.355, 1);

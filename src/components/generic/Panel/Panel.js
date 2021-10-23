@@ -3,7 +3,8 @@ import './Panel.scss';
 
 class Panel extends Component {
   render() {
-    return <div class="shadow-5">{this.props.children}</div>;
+    const { className } = this.props;
+    return <div className={['relative rounded p-4', className].join(" ")}>{this.props.children}</div>;
   }
 }
 

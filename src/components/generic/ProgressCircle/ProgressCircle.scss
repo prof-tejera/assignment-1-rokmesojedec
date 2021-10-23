@@ -1,0 +1,57 @@
+
+
+//https://dev.to/afif/we-can-finally-animate-css-gradient-kdk
+$circleSize: 400px;
+$circelThickness: 25px;
+.ProgressCircle {
+    margin: 0;
+    padding: 0;
+    width: $circleSize;
+    height: $circleSize;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background: conic-gradient(
+        var(--code-color),
+        var(--secondary-color),
+        var(--danger-color),
+        var(--warning-color),
+        var(--success-color),
+        var(--code-color)
+    );
+    .overlay {
+        position: absolute;
+        top:0;
+        bottom: 0;
+        left:0;
+        right: 0;
+        margin: 0;
+        padding: 0;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+
+        @for $i from 0 through 100{
+            $percentDeg: 3.6deg;
+            &.progress-#{$i}{
+                transition: 0.2s background linear;
+                $currentProgress: $percentDeg * $i;
+                $currentProgressIncreased: 1.15 * $currentProgress;
+                background: conic-gradient(transparent 0 #{$currentProgress}, black #{$currentProgressIncreased} 360deg);
+            }
+        }
+
+        .InnerCircle {
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            background-color: rgb(0, 0, 0);
+            border-radius: 50%;
+            width: $circleSize - $circelThickness;
+            height: $circleSize - $circelThickness;
+        }
+    }
+}

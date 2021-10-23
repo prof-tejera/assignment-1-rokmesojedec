@@ -20,6 +20,7 @@ export const TIME_ENUM = {
     MONTH: MONTH
 }
 
+
 export class Duration {
     constructor({
         years = 0,
@@ -29,7 +30,8 @@ export class Duration {
         minutes = 0,
         seconds = 0,
         milliseconds = 0,
-        tickSize = MILLISECOND
+        tickSize = MILLISECOND,
+        countdown = true,
     } = {}) {
         // Convert args to milliseconds
         this._milliseconds = 0
@@ -40,12 +42,18 @@ export class Duration {
             + days * DAY
             + months * MONTH
             + years * YEAR;
+
+        this._startTime = this._milliseconds;
         this.tickSize = tickSize;
     }
 
     tick() {
         this._milliseconds -= this.tickSize;
         if (this._milliseconds < 0) this._milliseconds = 0;
+    }
+
+    get precentDone(){
+        return Math.floor(100 * (this._milliseconds / this._startTime));
     }
 
     get years() {

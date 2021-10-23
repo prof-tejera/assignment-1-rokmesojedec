@@ -26,11 +26,11 @@ function App() {
           children-p-y-8"
     >
       <Router>
-        <header class="p-y-0 slide-down-delay-1 fixed-lg full-width z-3 top gradient-lg-code-primary shadow-7">
-          <nav class="p-lg-0 nav-sm typescale-minor-second max-width-center-xxl nav-flex">
-            <ul class="hover-light children-p-2 text-lg-light">
+        <header className="p-y-0 slide-down-delay-1 fixed-lg full-width z-3 top gradient-code-secondary shadow-7">
+          <nav className="p-lg-0 nav-sm typescale-minor-second max-width-center-xxl nav-flex m-y-1">
+            <ul className="hover-light children-p-2 text-lg-light">
               <li>
-                <strong class="nowrap" href="index.html">
+                <strong className="nowrap" href="index.html">
                   Assignment 1
                 </strong>
               </li>
@@ -44,7 +44,7 @@ function App() {
           </nav>
         </header>
 
-        <section class="max-width-center-xxl">
+        <section className="max-width-center-xxl">
           <Switch>
             <Route path="/docs">
               <DocumentationView />

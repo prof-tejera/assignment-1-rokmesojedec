@@ -1,6 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
-
-
-.timer-font {
-    font-family: Orbitron, serif;
+.time-components{
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
 }

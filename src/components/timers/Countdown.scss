@@ -1,0 +1,13 @@
+.ButtonsPanel {
+    .RoundButton {
+        height: 3rem;
+        width: 3rem;
+        border-radius: 50%;
+        padding: 0;
+        transition: box-shadow 0.5 linear;
+
+        &:hover{
+            box-shadow: 0 2px 4px rgba(90, 90, 90, 0.2);
+        }
+    }
+}

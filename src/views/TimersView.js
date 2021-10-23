@@ -23,18 +23,19 @@ const TimerTitle = styled.div``;
 
 function App() {
   const timers = [
-    { title: "Stopwatch", C: <Stopwatch /> },
-    { title: "Countdown", C: <Countdown /> },
-    { title: "XY", C: <XY /> },
+    { title: "Stopwatch", C: <Stopwatch title={"Stopwatch"} /> },
+    { title: "Countdown", C: <Countdown title={"Countdown"} /> },
+    { title: "XY", C: <XY title={"XY"} /> },
     { title: "Tabata", C: <Tabata /> },
   ];
 
   return (
-    <div className="grid">
-      {timers.map((timer) => (
-        <div class="col-span-6">
-            <h2>{timer.title}</h2>
+    <div className="grid typescale-md-major-third grid-col-span-12">
+      {timers.map((timer, index) => (
+        <div className="col-lg-span-6 " key={index}>
+          <div className="m-t-2 m-x-0 p-0">
             {timer.C}
+          </div>
         </div>
       ))}
     </div>

@@ -169,7 +169,7 @@ $overlay-degrees: ("bottom": 0, "right": 90deg, "top": 180deg, "left": 270deg);
 @for $i from 1 through 100 {
     @if $i % 5 == 0 {
         .opacity-#{$i} {
-            opacity: $i / 100;
+            opacity: $i * 0.01;
         }
     }
 }
