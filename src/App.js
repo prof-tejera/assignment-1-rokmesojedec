@@ -1,17 +1,9 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import styled from "styled-components";
-
 import DocumentationView from "./views/DocumentationView";
 import TimersView from "./views/TimersView";
 import "./assets/rokit/src/scss/roKit.scss";
 import "./style/main.scss";
-
-const Container = styled.div`
-  background: #f0f6fb;
-  height: 100vh;
-  overflow: auto;
-`;
 
 function App() {
   return (
@@ -27,7 +19,7 @@ function App() {
     >
       <Router>
         <header className="p-y-0 slide-down-delay-1 fixed-lg full-width z-3 top gradient-code-secondary shadow-7">
-          <nav className="p-lg-0 nav-sm typescale-minor-second max-width-center-xxl nav-flex m-y-1">
+          <nav className="p-lg-0 nav-flex nav-main typescale-minor-second max-width-center-xxl  m-y-1">
             <ul className="hover-light children-p-2 text-lg-light">
               <li>
                 <strong className="nowrap" href="index.html">
@@ -44,7 +36,7 @@ function App() {
           </nav>
         </header>
 
-        <section className="max-width-center-xxl">
+        <section className="max-width-center-xxl p-b-0 m-b-0">
           <Switch>
             <Route path="/docs">
               <DocumentationView />

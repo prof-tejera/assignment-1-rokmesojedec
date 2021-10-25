@@ -1,18 +1,49 @@
-
-
 //https://dev.to/afif/we-can-finally-animate-css-gradient-kdk
-$circleSize: 400px;
-$circelThickness: 25px;
+@use "sass:math";
+:root {
+    --circle-size: 350px;
+    --loader-thickness: 10px;
+    --inner-circle-offset: 0px;
+}
+
+.size-xs { --circle-size: 80px; }
+.thickness-xs { --loader-thickness: 4px;}
+
+.size-sm { --circle-size: 100px; }
+.thickness-sm { --loader-thickness: 8px;}
+
+
+.size-md { --circle-size: 300px;}
+.thickness-md { --loader-thickness: 14px; }
+
+
+.size-lg { --circle-size: 376px; }
+.thickness-lg { --loader-thickness: 18px; }
+
+
+.size-xl { --circle-size: 426px; }
+.thickness-xl { --loader-thickness: 25px; }
+
+.size-xxl { --circle-size: 500px; }
+.thickness-xxl { --loader-thickness: 30px; }
+
+.embedded { 
+    --inner-circle-offset:-1px;
+}
+
 .ProgressCircle {
-    margin: 0;
+    outline: 10px solid black;
+    margin: 0 auto;
     padding: 0;
-    width: $circleSize;
-    height: $circleSize;
+    width: var(--circle-size);
+    height: var(--circle-size);
+    border: none;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
+
     background: conic-gradient(
         var(--code-color),
         var(--secondary-color),
@@ -21,26 +52,29 @@ $circelThickness: 25px;
         var(--success-color),
         var(--code-color)
     );
+
     .overlay {
         position: absolute;
-        top:0;
-        bottom: 0;
-        left:0;
-        right: 0;
+        top: var(--inner-circle-offset);
+        left: var(--inner-circle-offset);
+        right: var(--inner-circle-offset);
+        bottom: var(--inner-circle-offset);
         margin: 0;
         padding: 0;
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: space-evenly;
+        $numberSteps: 10000;
+        $percentDeg: math.div(360deg, $numberSteps);
 
-        @for $i from 0 through 100{
-            $percentDeg: 3.6deg;
-            &.progress-#{$i}{
-                transition: 0.2s background linear;
+        @for $i from 0 through $numberSteps {
+            &.progress-#{$i} {
                 $currentProgress: $percentDeg * $i;
-                $currentProgressIncreased: 1.15 * $currentProgress;
-                background: conic-gradient(transparent 0 #{$currentProgress}, black #{$currentProgressIncreased} 360deg);
+                background: conic-gradient(
+                    transparent 0 #{$currentProgress},
+                    black #{$currentProgress} 360deg
+                );
             }
         }
 
@@ -50,8 +84,9 @@ $circelThickness: 25px;
             justify-content: space-evenly;
             background-color: rgb(0, 0, 0);
             border-radius: 50%;
-            width: $circleSize - $circelThickness;
-            height: $circleSize - $circelThickness;
+            border: none;
+            width: calc(var(--circle-size) - var(--loader-thickness));
+            height: calc(var(--circle-size) - var(--loader-thickness));
         }
     }
 }

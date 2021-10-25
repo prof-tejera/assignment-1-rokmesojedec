@@ -8,12 +8,11 @@
         width: 3rem;
         display: block;
         text-align: center;
-        color: #0011ff;
+        color: #ff9200;
     }
 
     .timer-font {
         font-size: 2rem;
-        font-weight: bold;
     }
 
     .label {
@@ -30,7 +29,12 @@
     position: relative;
 
     &.colon {
-        margin-left: 2rem;
+        &.readonly-mode {
+            margin-left: 2rem;
+        }
+        &.input-mode {
+            margin-left: 3rem;
+        }
         &::before {
             left: -1rem;
             top: 0.5rem;

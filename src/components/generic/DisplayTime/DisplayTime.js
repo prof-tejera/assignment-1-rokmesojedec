@@ -1,53 +1,55 @@
 import { Component } from 'react';
-import { Duration } from '../../../utils/helpers';
+import { Duration } from '../../../classes/Duration';
 import './DisplayTime.scss';
 import TimeComponent from '../TimeComponent/TimeComponent';
 import PropTypes from 'prop-types';
 
 class DisplayTime extends Component {
 
-  state = {
-    years: 0,
-    months: 0,
-    days: 0,
-    hours: 0,
-    minutes: 0,
-    seconds: 0,
-    milliseconds: 0
-  };
-
-
-  componentDidMount() {
-    const { duration } = this.props;
-
-    if (duration && !this.countdownInterval) {
-      this.countdownInterval = setInterval(() => {
-        duration.tick();
-        this.setState({
-          years: duration.years,
-          months: duration.months,
-          days: duration.days,
-          hours: duration.hours,
-          minutes: duration.minutes,
-          seconds: duration.seconds,
-          milliseconds: duration.milliseconds
-        });
-        if (duration.done) clearInterval(this.countdownInterval);
-      }, duration.tickSize);
+  constructor(props) {
+    super(props);
+    this.state = {
+      years: 0,
+      months: 0,
+      days: 0,
+      hours: 0,
+      minutes: 0,
+      seconds: 0,
+      milliseconds: 0,
+      duration: props.duration
     }
+  }
+
+  durationTick(duration) {
+    this.setState({
+      years: duration.currentYears,
+      months: duration.currentMonths,
+      days: duration.currentDays,
+      hours: duration.currentHours,
+      minutes: duration.currentMinutes,
+      seconds: duration.currentSeconds,
+      milliseconds: duration.currentMilliseconds
+    });
+  }
+
+  componentDidMount(){
+    const { duration } = this.state;
+    if (duration) duration.pushIntervalFunction(this.durationTick.bind(this));
+  }
+
+  componentWillUnmount() {
+    const { duration } = this.state;
+    duration.clear();
   }
 
   render() {
     const { className } = this.props;
 
     const components = [
-      // { label: "Y", prependZero: false, name: "years" },
-      // { label: "M", prependZero: false, name: "months" },
-      // { label: "D", prependZero: false, name: "days" },
       { label: "h", prependZero: true, name: "hours" },
       { label: "m", prependZero: true, name: "minutes" },
       { label: "s", prependZero: true, name: "seconds" },
-      { label: "ms", prependZero: true, name: "milliseconds" }
+      { label: "ms", prependZero: false, name: "milliseconds" }
     ]
 
     return <div className={['time-components', className].join(" ")}>
@@ -56,10 +58,11 @@ class DisplayTime extends Component {
           key={component.label}
           label={component.label}
           prependZero={component.prependZero}
-          showColon={i !== 0 }></TimeComponent>)}
+          showColon={i !== 0}></TimeComponent>)}
     </div>;
   }
 }
+
 DisplayTime.propTypes = {
   duration: PropTypes.instanceOf(Duration),
   className: PropTypes.string
