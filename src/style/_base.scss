@@ -25,6 +25,22 @@ html {
     .size-48 {
         font-size: 32px;
     }
+
+    nav {
+        strong {
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        ul {
+            margin: 0 0 0 auto;
+            li {
+                font-size: 1.5rem;
+                display: flex;
+                border-radius: 1rem;
+            }
+        }
+    }
 }
 
 .ButtonsPanel {
@@ -39,7 +55,7 @@ html {
     }
 }
 
-:root{
+:root {
     --timer-font-color: #ff9200;
     --timer-font-family: Orbitron, serif;
 }
@@ -48,11 +64,11 @@ html {
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+    -webkit-appearance: none;
+    margin: 0;
 }
 
 /* Firefox */
-input[type=number] {
-  -moz-appearance: textfield;
+input[type="number"] {
+    -moz-appearance: textfield;
 }
