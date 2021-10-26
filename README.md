@@ -62,3 +62,9 @@ npm start
 ```
 
 Assembled timers: `localhost:3000`. Documentation: `localhost:3000/docs`
+
+## References / Citations
+
+- Material Icons [https://fonts.googleapis.com/icon?family=Material+Icons]
+- Noto Sans & Roboto Fonts [https://fonts.googleapis.com/css2?family=Noto+Sans:wght@100;300;400;500;700&family=Roboto:wght@100;300;400;500;700&display=swap]
+- ro:Kit (Developed by me) [https://github.com/rokmesojedec/rokit]
