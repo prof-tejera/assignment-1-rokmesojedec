@@ -11,7 +11,7 @@ class XY extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      progress: 0,
+      progress: 8754,
       duration: new Duration(
         {
           rounds: 3,
@@ -47,7 +47,7 @@ class XY extends React.Component {
     const { title } = this.props;
     const { progress, duration } = this.state;
     return <Panel>
-      <ProgressCircle progress={8987} >
+      <ProgressCircle progress={progress} >
         <div>
           <div className="text-center m-x-0 m-t-0 m-b-1">
             <h5 className="text-center weight-100 gradient-code-secondary-clip m-b-2">{title}</h5>

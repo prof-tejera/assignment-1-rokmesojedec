@@ -4,13 +4,14 @@ import './Input.scss';
 
 class Input extends Component {
   render() {
-    const { type, value, disabled, className, min, max } = this.props;
+    const { type, value, disabled, className, min, max, onChange } = this.props;
     return <input className={["timer-input timer-font", className].join(" ")} 
       type={type} 
       value={value} 
       min={min}
       max={max}
-      disabled={disabled}></input>;
+      disabled={disabled}
+      onChange={onChange}></input>;
   }
 }
 Input.propTypes = {
@@ -21,13 +22,17 @@ Input.propTypes = {
   ]).isRequired,
   disabled: PropTypes.bool,
   min: PropTypes.number,
-  max: PropTypes.number
+  max: PropTypes.number,
+  onChange: PropTypes.func
 }
 
 Input.defaultProps = {
   type: "number",
   disabled: false,
-  min: 0
+  min: 0,
+  onChange: ()=>{
+    console.log("onChange firing");
+  }
 }
 
 export default Input;

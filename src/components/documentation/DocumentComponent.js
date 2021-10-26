@@ -9,24 +9,28 @@ class DocumentComponent extends React.Component {
         <div className="">
           <div className="component-container m-r-2">{this.props.component}</div>
           <table className="sass-table">
-            <tr>
-              <th>Prop</th>
-              <th>Description</th>
-              <th>Type</th>
-              <th>Default value</th>
-            </tr>
-            {this.props.propDocs.map((doc) => {
-              return (
-                <tr>
-                  <td>{doc.prop}</td>
-                  <td>{doc.description}</td>
-                  <td>{doc.type}</td>
-                  <td className="code-font">
-                    {doc.defaultValue}
-                  </td>
-                </tr>
-              );
-            })}
+            <thead>
+              <tr>
+                <th>Prop</th>
+                <th>Description</th>
+                <th>Type</th>
+                <th>Default value</th>
+              </tr>
+            </thead>
+            <tbody>
+              {this.props.propDocs.map((doc, index) => {
+                return (
+                  <tr key={index}>
+                    <td>{doc.prop}</td>
+                    <td>{doc.description}</td>
+                    <td>{doc.type}</td>
+                    <td className="code-font">
+                      {doc.defaultValue}
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
           </table>
         </div>
       </div>

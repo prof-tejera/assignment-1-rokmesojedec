@@ -5,7 +5,7 @@ import TimersView from "./views/TimersView";
 
 // Source: https://github.com/rokmesojedec/roKit
 //This Framework was developed by me
-import "./assets/rokit/src/scss/roKit.scss";
+import "./assets/rokit/dist/roKit.css";
 import "./style/main.scss";
 
 function App() {

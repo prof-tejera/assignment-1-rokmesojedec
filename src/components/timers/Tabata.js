@@ -10,7 +10,7 @@ class Tabata extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      progress: 0,
+      progress: 1343,
       tabata: new Duration(
         {
           rounds: 1,
@@ -43,7 +43,7 @@ class Tabata extends React.Component {
     const { title } = this.props;
     const { progress } = this.state;
     return <Panel>
-      <ProgressCircle progress={2333}>
+      <ProgressCircle progress={progress}>
         <div className="tabata">
           <div className="text-center m-0">
             <h5 className="text-center weight-100 gradient-code-secondary-clip ">{title}</h5>

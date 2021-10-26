@@ -9,6 +9,7 @@ class Stopwatch extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      progress: 9464,
       stopwatch: new Duration(
         {
           rounds: 1,
@@ -41,9 +42,9 @@ class Stopwatch extends React.Component {
 
   render() {
     const { title } = this.props;
-    const { stopwatch } = this.state;
+    const { stopwatch, progress } = this.state;
     return <Panel>
-      <ProgressCircle progress={4222}>
+      <ProgressCircle progress={progress}>
         <div>
           <div className="text-center m-0">
             <h5 className="text-center weight-100 gradient-code-secondary-clip ">{title}</h5>
