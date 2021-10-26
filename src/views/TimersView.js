@@ -6,6 +6,7 @@ import XY from "../components/timers/XY";
 import Tabata from "../components/timers/Tabata";
 
 function App() {
+
   const timers = [
     { title: "Stopwatch", C: <Stopwatch title={"Stopwatch"} /> },
     { title: "Countdown", C: <Countdown title={"Countdown"} /> },
@@ -14,7 +15,7 @@ function App() {
   ];
 
   return (
-    <div className="grid typescale-md-major-third grid-col-span-12">
+    <div className="grid typescale-md-major-third grid-col-span-12 children-slide-down">
       {timers.map((timer, index) => (
         <div className="col-lg-span-6 " key={index}>
           <div className="m-t-2 m-x-0 p-0">

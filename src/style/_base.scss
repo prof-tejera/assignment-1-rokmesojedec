@@ -4,6 +4,22 @@ html {
     padding: 0;
     margin: 0;
     overflow-x: inherit;
+    height: 100%;
+}
+
+body{
+    height: 100%;
+    margin: 0;
+    background-repeat: no-repeat !important;
+    background-attachment: fixed !important;
+}
+
+.white-bg{
+    background: var(--light-color) !important;
+}
+
+.width-100px {
+    width:100px;
 }
 
 #root {

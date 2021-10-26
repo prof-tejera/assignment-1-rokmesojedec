@@ -5,13 +5,13 @@ import PropTypes from 'prop-types';
 class Button extends Component {
 
   render() {
-    const {disabled, onClick, children, label, className} = this.props;
+    const {disabled, onClick, children, tooltip, className} = this.props;
     return <button 
-      data-tooltip-bottom={label}
+      data-tooltip-bottom={tooltip}
       className={['btn', className].join(" ")} 
       disabled={disabled} 
       onClick={onClick}>
-        {children}
+        {children ? children : "Button"}
     </button>;
   }
 }
@@ -21,13 +21,13 @@ export default Button;
 Button.propTypes = {
   disabled: PropTypes.bool,
   className: PropTypes.string,
-  label: PropTypes.string,
+  tooltip: PropTypes.string,
   onClick: PropTypes.func
 }
 
 Button.defaultProps = {
   disabled: false,
-  className: null,
-  label: null,
+  className: "primary bold raised",
+  tooltip: null,
   onClick: ()=>{ console.log("button clicked!"); }
 }

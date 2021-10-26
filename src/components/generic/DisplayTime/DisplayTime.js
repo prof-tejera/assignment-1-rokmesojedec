@@ -9,9 +9,6 @@ class DisplayTime extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      years: 0,
-      months: 0,
-      days: 0,
       hours: 0,
       minutes: 0,
       seconds: 0,
@@ -22,9 +19,6 @@ class DisplayTime extends Component {
 
   durationTick(duration) {
     this.setState({
-      years: duration.currentYears,
-      months: duration.currentMonths,
-      days: duration.currentDays,
       hours: duration.currentHours,
       minutes: duration.currentMinutes,
       seconds: duration.currentSeconds,
@@ -43,8 +37,9 @@ class DisplayTime extends Component {
   }
 
   render() {
-    const { className } = this.props;
+    const { className, readOnly } = this.props;
 
+    // Duration class also support Years, Months, Days but these time units aren't appropriate for timer use
     const components = [
       { label: "h", prependZero: true, name: "hours" },
       { label: "m", prependZero: true, name: "minutes" },
@@ -58,6 +53,7 @@ class DisplayTime extends Component {
           key={component.label}
           label={component.label}
           prependZero={component.prependZero}
+          readOnly={readOnly}
           showColon={i !== 0}></TimeComponent>)}
     </div>;
   }
@@ -65,12 +61,14 @@ class DisplayTime extends Component {
 
 DisplayTime.propTypes = {
   duration: PropTypes.instanceOf(Duration),
-  className: PropTypes.string
+  className: PropTypes.string,
+  readOnly: PropTypes.bool
 }
 
 DisplayTime.defaultProps = {
   duration: new Duration(0),
-  className: null
+  className: null,
+  readOnly: false
 }
 
 export default DisplayTime;

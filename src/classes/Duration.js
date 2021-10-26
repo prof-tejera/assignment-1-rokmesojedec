@@ -7,6 +7,8 @@ const DAY = 24 * HOUR;
 const YEAR = 365 * DAY;
 const MONTH = YEAR / 12;
 
+
+// Time Enums in milliseconds
 export const TIME_ENUM = {
     MILLISECOND: MILLISECOND,
     SECOND: SECOND,
@@ -17,6 +19,7 @@ export const TIME_ENUM = {
     MONTH: MONTH
 }
 
+// Creates Duration Object
 export class Duration {
     constructor({
         years = 0,
@@ -27,10 +30,10 @@ export class Duration {
         seconds = 0,
         milliseconds = 0,
         rounds = 1,
-        tickSize = MILLISECOND,
-        countdownMode = true,
-        intervalFunctions = [],
-        name = "untitled"
+        tickSize = MILLISECOND, // sets the amount increased/decreased on each tick
+        countdownMode = true, // when set to true, we count down to passed time values
+        // and when countdownMode is true, we count up to the passed value
+        intervalFunctions = [], // functions which are executed during each tick of the timer
     } = {}) {
         // Convert args to milliseconds
 
@@ -47,18 +50,16 @@ export class Duration {
         this.countdownInterval = null;
         this.intervalFunctions = [...intervalFunctions];
         this.countdownMode = countdownMode;
-        this.name = name;
 
-        // define setters
+        // defines getters and setters for time components
         ["years", "months", "days", "hours", "minutes", "seconds", "milliseconds"].forEach(
             prop => {
                 Object.defineProperty(this, prop, {
                     get: function () {
                         return this[`_${prop}`];
                     },
-                    set: function (value) 
-                    {   
-                        if(isNaN(value) || (!isNaN(value) && value < 0)) 
+                    set: function (value) {
+                        if (isNaN(value) || (!isNaN(value) && value < 0))
                             throw new Error(`${prop} paramter is not a number greater or equal to 0`);
                         this[`_${prop}`] = value;
                     }
@@ -93,6 +94,7 @@ export class Duration {
     }
 
     tick() {
+        // increases or decreases time on each tick
         if (this.countdownMode) {
             // COUNTING DOWN
             this._currentTime -= this.tickSize;
@@ -145,7 +147,9 @@ export class Duration {
     }
 
     get precentDone() {
-        return Math.floor((10000 * (((this.countdownMode ? this._currentRound - 1 : this._roundsCompleted) * this._roundTime + this._currentTime) / this._totalTime)));
+        return Math.floor((10000 *
+            (((this.countdownMode ? this._currentRound - 1 : this._roundsCompleted) *
+                this._roundTime + this._currentTime) / this._totalTime)));
     }
 
     get currentYears() {
@@ -177,6 +181,7 @@ export class Duration {
     }
 
     get done() {
+        // tells weather times is finished
         if (this.countdownMode)
             return this._currentRound === 0 && this._currentTime === 0;
         return this._currentRound === 0 && this._currentTime === this._roundTime;

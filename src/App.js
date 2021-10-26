@@ -2,6 +2,9 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import DocumentationView from "./views/DocumentationView";
 import TimersView from "./views/TimersView";
+
+// Source: https://github.com/rokmesojedec/roKit
+//This Framework was developed by me
 import "./assets/rokit/src/scss/roKit.scss";
 import "./style/main.scss";
 
@@ -18,7 +21,7 @@ function App() {
           children-p-y-8"
     >
       <Router>
-        <header className="p-y-0 slide-down-delay-1 fixed full-width z-3 top gradient-code-secondary shadow-8">
+        <header className="p-y-0 slide-down-delay-5 fixed full-width z-3 top gradient-code-secondary shadow-8">
           <nav className="p-lg-0 nav-flex nav-main typescale-minor-second max-width-center-xxl m-y-1">
             <h1 className="nowrap text-light" href="index.html">
               Rok's CSCI E39 Assignment #1

@@ -14,7 +14,7 @@ class ProgressBar extends Component {
 
 ProgressBar.propTypes = {
     progress: PropTypes.number,
-    position: PropTypes.oneOf(["bottom", "top", "left", "right"]),
+    position: PropTypes.oneOf(["bottom", "top", "left", "right", null]),
     className: PropTypes.string,
     background: PropTypes.string
 }

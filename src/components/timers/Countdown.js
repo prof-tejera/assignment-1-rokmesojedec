@@ -29,23 +29,27 @@ class Countdown extends React.Component {
   }
 
   componentDidMount() {
-    const { duration } = this.state;
-    if (duration) duration.start();
+    // This code was added for development purposes, starts the Timer countdown
+    // Timer should be static for first deliverable
+    // const { duration } = this.state;
+    // if (duration) duration.start();
   }
 
   componentWillUnmount() {
-    const { duration } = this.state;
-    if (duration) duration.clear();
+    // This code was added for development purposes, clears the Timer countdown
+    // Timer should be static for first deliverable
+    // const { duration } = this.state;
+    // if (duration) duration.clear();
   }
 
   render() {
     const { title } = this.props;
     const { progress, duration } = this.state;
     return <Panel>
-      <ProgressCircle progress={progress}>
+      <ProgressCircle progress={7222}>
         <div>
           <div className="text-center m-0">
-            <h5 class="text-center weight-100 gradient-code-secondary-clip ">{title}</h5>
+            <h5 className="text-center weight-100 gradient-code-secondary-clip ">{title}</h5>
           </div>
           <DisplayTime className="m-t-3" duration={duration}></DisplayTime>
           <div className="ButtonsPanel">

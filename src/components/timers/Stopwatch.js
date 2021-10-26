@@ -26,23 +26,27 @@ class Stopwatch extends React.Component {
   }
 
   componentDidMount() { 
-    const { stopwatch } = this.state;
-    if (stopwatch) stopwatch.start();
+    // This code was added for development purposes, starts the Timer
+    // Timer should be static for first deliverable
+    // const { stopwatch } = this.state;
+    // if (stopwatch) stopwatch.start();
   }
 
   componentWillUnmount() {
-    const { stopwatch } = this.state;
-    if (stopwatch) stopwatch.clear();
+        // This code was added for development purposes, clears the Timer
+    // Timer should be static for first deliverable
+    // const { stopwatch } = this.state;
+    // if (stopwatch) stopwatch.clear();
   }
 
   render() {
     const { title } = this.props;
     const { stopwatch } = this.state;
     return <Panel>
-      <ProgressCircle progress={stopwatch.precentDone}>
+      <ProgressCircle progress={4222}>
         <div>
           <div className="text-center m-0">
-            <h5 class="text-center weight-100 gradient-code-secondary-clip ">{title}</h5>
+            <h5 className="text-center weight-100 gradient-code-secondary-clip ">{title}</h5>
           </div>
           <DisplayTime className="m-t-3" duration={stopwatch}></DisplayTime>
           <div className="ButtonsPanel">
