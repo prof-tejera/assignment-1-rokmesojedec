@@ -602,6 +602,47 @@ nav ul li ul {
 nav ul li ul li a {
   color: unset !important;
 }
+nav.nav-main {
+  display: flex;
+}
+nav.nav-main > ul {
+  display: flex;
+  flex-wrap: initial;
+  position: relative;
+}
+nav.nav-main > ul > li:hover {
+  border-radius: 5px 5px 0 0;
+  color: var(--link-hover-color);
+  background-color: var(--hover-color);
+  transition: background-color 0.3s cubic-bezier(0.39, 0.575, 0.565, 1);
+}
+nav.nav-main > ul li {
+  margin: 0;
+  padding: var(--unit);
+  width: initial;
+  font-weight: initial;
+  text-transform: initial;
+}
+nav.nav-main > ul li a {
+  white-space: nowrap;
+}
+nav.nav-main > ul li:hover a ~ ul, nav.nav-main > ul li:hover ~ ul:hover {
+  display: block;
+}
+nav.nav-main > ul li a ~ ul {
+  border-radius: 0 0 5px 5px;
+  top: 100%;
+  left: 0;
+  position: absolute;
+  display: none;
+  animation: fade-in 0.3s;
+  background-color: var(--hover-color);
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.007), 7px 7px 7px rgba(0, 0, 0, 0.1), -7px 7px 7px rgba(0, 0, 0, 0.1);
+}
+nav.nav-main > ul li a ~ ul li {
+  padding: calc(var(--unit) / 2) calc(2 * var(--unit));
+  display: list-item;
+}
 @media (max-width: 576px) {
   nav.nav-xs {
     display: flex;
@@ -19111,14 +19152,14 @@ table .gradient-dark-light-clip caption,
   --text-color: #141414;
   --text-light-color: #ffffff;
   --text-muted-color: #747474;
-  --code-color: #1b2386;
+  --code-color: #0031cb;
   --primary-color: #70d6ffff;
   --primary-dark-color: #00abf0;
   --primary-light-color: #94e0ff;
-  --secondary-color: #ff9770ff;
-  --secondary-light-color: #ffb194;
-  --secondary-dark-color: #f04100;
-  --success-color: #62bd4b;
+  --secondary-color: #c4471aff;
+  --secondary-light-color: #d37553;
+  --secondary-dark-color: #531e0b;
+  --success-color: #187201;
   --warning-color: #ffd670ff;
   --danger-color: #ff70a6ff;
   --overlay-color: rgba(20, 20, 20, 0.6);
@@ -19250,7 +19291,7 @@ ul.no-bullets {
   --primary-x-offset: var(--shadow1);
   --primary-blur: calc(var(--shadow1) * var(--shadow1-blur-multiplier));
   --base-strength-multiplier:var(--shadow1-strength-multiplier);
-  box-shadow: var(--primary-x-offset) var(--primary-x-offset) var(--primary-blur) rgba(var(--r), var(--g), var(--b), var(--alpha)), calc(var(--primary-x-offset) * -1) calc(var(--primary-x-offset) * -1) var(--primary-blur) rgba(var(--r), var(--g), var(--b), var(--seconday-alpha));
+  box-shadow: var(--primary-x-offset) var(--primary-x-offset) var(--primary-blur) rgba(var(--r), var(--g), var(--b), var(--alpha)), calc(-1 * var(--primary-x-offset)) calc(-1 * var(--primary-x-offset)) var(--primary-blur) rgba(var(--r), var(--g), var(--b), var(--seconday-alpha));
 }
 
 @media (max-width: 576px) {
@@ -19305,7 +19346,7 @@ ul.no-bullets {
   --primary-x-offset: var(--shadow2);
   --primary-blur: calc(var(--shadow2) * var(--shadow2-blur-multiplier));
   --base-strength-multiplier:var(--shadow2-strength-multiplier);
-  box-shadow: var(--primary-x-offset) var(--primary-x-offset) var(--primary-blur) rgba(var(--r), var(--g), var(--b), var(--alpha)), calc(var(--primary-x-offset) * -1) calc(var(--primary-x-offset) * -1) var(--primary-blur) rgba(var(--r), var(--g), var(--b), var(--seconday-alpha));
+  box-shadow: var(--primary-x-offset) var(--primary-x-offset) var(--primary-blur) rgba(var(--r), var(--g), var(--b), var(--alpha)), calc(-1 * var(--primary-x-offset)) calc(-1 * var(--primary-x-offset)) var(--primary-blur) rgba(var(--r), var(--g), var(--b), var(--seconday-alpha));
 }
 
 @media (max-width: 576px) {
@@ -19360,7 +19401,7 @@ ul.no-bullets {
   --primary-x-offset: var(--shadow3);
   --primary-blur: calc(var(--shadow3) * var(--shadow3-blur-multiplier));
   --base-strength-multiplier:var(--shadow3-strength-multiplier);
-  box-shadow: var(--primary-x-offset) var(--primary-x-offset) var(--primary-blur) rgba(var(--r), var(--g), var(--b), var(--alpha)), calc(var(--primary-x-offset) * -1) calc(var(--primary-x-offset) * -1) var(--primary-blur) rgba(var(--r), var(--g), var(--b), var(--seconday-alpha));
+  box-shadow: var(--primary-x-offset) var(--primary-x-offset) var(--primary-blur) rgba(var(--r), var(--g), var(--b), var(--alpha)), calc(-1 * var(--primary-x-offset)) calc(-1 * var(--primary-x-offset)) var(--primary-blur) rgba(var(--r), var(--g), var(--b), var(--seconday-alpha));
 }
 
 @media (max-width: 576px) {
@@ -19415,7 +19456,7 @@ ul.no-bullets {
   --primary-x-offset: var(--shadow4);
   --primary-blur: calc(var(--shadow4) * var(--shadow4-blur-multiplier));
   --base-strength-multiplier:var(--shadow4-strength-multiplier);
-  box-shadow: var(--primary-x-offset) var(--primary-x-offset) var(--primary-blur) rgba(var(--r), var(--g), var(--b), var(--alpha)), calc(var(--primary-x-offset) * -1) calc(var(--primary-x-offset) * -1) var(--primary-blur) rgba(var(--r), var(--g), var(--b), var(--seconday-alpha));
+  box-shadow: var(--primary-x-offset) var(--primary-x-offset) var(--primary-blur) rgba(var(--r), var(--g), var(--b), var(--alpha)), calc(-1 * var(--primary-x-offset)) calc(-1 * var(--primary-x-offset)) var(--primary-blur) rgba(var(--r), var(--g), var(--b), var(--seconday-alpha));
 }
 
 @media (max-width: 576px) {
@@ -19470,7 +19511,7 @@ ul.no-bullets {
   --primary-x-offset: var(--shadow5);
   --primary-blur: calc(var(--shadow5) * var(--shadow5-blur-multiplier));
   --base-strength-multiplier:var(--shadow5-strength-multiplier);
-  box-shadow: var(--primary-x-offset) var(--primary-x-offset) var(--primary-blur) rgba(var(--r), var(--g), var(--b), var(--alpha)), calc(var(--primary-x-offset) * -1) calc(var(--primary-x-offset) * -1) var(--primary-blur) rgba(var(--r), var(--g), var(--b), var(--seconday-alpha));
+  box-shadow: var(--primary-x-offset) var(--primary-x-offset) var(--primary-blur) rgba(var(--r), var(--g), var(--b), var(--alpha)), calc(-1 * var(--primary-x-offset)) calc(-1 * var(--primary-x-offset)) var(--primary-blur) rgba(var(--r), var(--g), var(--b), var(--seconday-alpha));
 }
 
 @media (max-width: 576px) {
@@ -19525,7 +19566,7 @@ ul.no-bullets {
   --primary-x-offset: var(--shadow6);
   --primary-blur: calc(var(--shadow6) * var(--shadow6-blur-multiplier));
   --base-strength-multiplier:var(--shadow6-strength-multiplier);
-  box-shadow: var(--primary-x-offset) var(--primary-x-offset) var(--primary-blur) rgba(var(--r), var(--g), var(--b), var(--alpha)), calc(var(--primary-x-offset) * -1) calc(var(--primary-x-offset) * -1) var(--primary-blur) rgba(var(--r), var(--g), var(--b), var(--seconday-alpha));
+  box-shadow: var(--primary-x-offset) var(--primary-x-offset) var(--primary-blur) rgba(var(--r), var(--g), var(--b), var(--alpha)), calc(-1 * var(--primary-x-offset)) calc(-1 * var(--primary-x-offset)) var(--primary-blur) rgba(var(--r), var(--g), var(--b), var(--seconday-alpha));
 }
 
 @media (max-width: 576px) {
@@ -19580,7 +19621,7 @@ ul.no-bullets {
   --primary-x-offset: var(--shadow7);
   --primary-blur: calc(var(--shadow7) * var(--shadow7-blur-multiplier));
   --base-strength-multiplier:var(--shadow7-strength-multiplier);
-  box-shadow: var(--primary-x-offset) var(--primary-x-offset) var(--primary-blur) rgba(var(--r), var(--g), var(--b), var(--alpha)), calc(var(--primary-x-offset) * -1) calc(var(--primary-x-offset) * -1) var(--primary-blur) rgba(var(--r), var(--g), var(--b), var(--seconday-alpha));
+  box-shadow: var(--primary-x-offset) var(--primary-x-offset) var(--primary-blur) rgba(var(--r), var(--g), var(--b), var(--alpha)), calc(-1 * var(--primary-x-offset)) calc(-1 * var(--primary-x-offset)) var(--primary-blur) rgba(var(--r), var(--g), var(--b), var(--seconday-alpha));
 }
 
 @media (max-width: 576px) {
@@ -19635,7 +19676,7 @@ ul.no-bullets {
   --primary-x-offset: var(--shadow8);
   --primary-blur: calc(var(--shadow8) * var(--shadow8-blur-multiplier));
   --base-strength-multiplier:var(--shadow8-strength-multiplier);
-  box-shadow: var(--primary-x-offset) var(--primary-x-offset) var(--primary-blur) rgba(var(--r), var(--g), var(--b), var(--alpha)), calc(var(--primary-x-offset) * -1) calc(var(--primary-x-offset) * -1) var(--primary-blur) rgba(var(--r), var(--g), var(--b), var(--seconday-alpha));
+  box-shadow: var(--primary-x-offset) var(--primary-x-offset) var(--primary-blur) rgba(var(--r), var(--g), var(--b), var(--alpha)), calc(-1 * var(--primary-x-offset)) calc(-1 * var(--primary-x-offset)) var(--primary-blur) rgba(var(--r), var(--g), var(--b), var(--seconday-alpha));
 }
 
 @media (max-width: 576px) {
@@ -19690,7 +19731,7 @@ ul.no-bullets {
   --primary-x-offset: var(--shadow9);
   --primary-blur: calc(var(--shadow9) * var(--shadow9-blur-multiplier));
   --base-strength-multiplier:var(--shadow9-strength-multiplier);
-  box-shadow: var(--primary-x-offset) var(--primary-x-offset) var(--primary-blur) rgba(var(--r), var(--g), var(--b), var(--alpha)), calc(var(--primary-x-offset) * -1) calc(var(--primary-x-offset) * -1) var(--primary-blur) rgba(var(--r), var(--g), var(--b), var(--seconday-alpha));
+  box-shadow: var(--primary-x-offset) var(--primary-x-offset) var(--primary-blur) rgba(var(--r), var(--g), var(--b), var(--alpha)), calc(-1 * var(--primary-x-offset)) calc(-1 * var(--primary-x-offset)) var(--primary-blur) rgba(var(--r), var(--g), var(--b), var(--seconday-alpha));
 }
 
 @media (max-width: 576px) {
@@ -19745,7 +19786,7 @@ ul.no-bullets {
   --primary-x-offset: var(--shadow10);
   --primary-blur: calc(var(--shadow10) * var(--shadow10-blur-multiplier));
   --base-strength-multiplier:var(--shadow10-strength-multiplier);
-  box-shadow: var(--primary-x-offset) var(--primary-x-offset) var(--primary-blur) rgba(var(--r), var(--g), var(--b), var(--alpha)), calc(var(--primary-x-offset) * -1) calc(var(--primary-x-offset) * -1) var(--primary-blur) rgba(var(--r), var(--g), var(--b), var(--seconday-alpha));
+  box-shadow: var(--primary-x-offset) var(--primary-x-offset) var(--primary-blur) rgba(var(--r), var(--g), var(--b), var(--alpha)), calc(-1 * var(--primary-x-offset)) calc(-1 * var(--primary-x-offset)) var(--primary-blur) rgba(var(--r), var(--g), var(--b), var(--seconday-alpha));
 }
 
 @media (max-width: 576px) {
@@ -28480,3 +28521,5 @@ p, div, section, header, footer, nav {
     text-align: justify;
   }
 }
+
+/*# sourceMappingURL=roKit.css.map */

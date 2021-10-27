@@ -7,7 +7,7 @@
     }
 
     &.shadow {
-        @extend .shadow-6;
+        @extend .shadow-6 !optional;
     }
 
     &.justify-content-vertically {

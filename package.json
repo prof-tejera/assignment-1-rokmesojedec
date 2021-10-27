@@ -2,7 +2,9 @@
   "name": "assignment-1",
   "version": "0.1.0",
   "private": true,
+  "homepage": ".",
   "dependencies": {
+    "material-design-icons": "^3.0.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-router": "^5.2.1",

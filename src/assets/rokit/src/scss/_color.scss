@@ -4,16 +4,16 @@
 // Generated from https://coolors.co/70d6ff-ff70a6-ff9770-ffd670-e9ff70
 $baby-blue: #70d6ffff;
 $french-pink: #ff70a6ff;
-$light-salmon: #ff9770ff;
+$light-salmon: #c4471aff;
 $orange-yellow-crayola: #ffd670ff;
 $mindaro: #e9ff70ff;
 //------------------------------------------------------------------------
-$green: #62bd4b;
+$green: #187201;
 $black: black;
 $gray: #8f8f8f;
 $dark-transparent: #000000e3;
 $white: white;
-$dark-blue: #1b2386;
+$dark-blue: #0031cb;
 
 // Gray Scale
 //-----------------------------------------------------------------------//
@@ -169,7 +169,7 @@ $overlay-degrees: ("bottom": 0, "right": 90deg, "top": 180deg, "left": 270deg);
 @for $i from 1 through 100 {
     @if $i % 5 == 0 {
         .opacity-#{$i} {
-            opacity: $i / 100;
+            opacity: $i * 0.01;
         }
     }
 }

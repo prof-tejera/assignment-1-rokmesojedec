@@ -58,7 +58,7 @@ nav {
             flex-basis: 25%;
             background-color: transparent;
             position: relative;
-  
+
             ul {
                 li {
                     font-weight: initial;
@@ -121,6 +121,55 @@ nav {
         }
     }
 
+    &.nav-main {
+        display: flex;
+        & > ul {
+            display: flex;
+            flex-wrap: initial;
+            position: relative;
+
+            & > li:hover {
+                // border-radius: $nav-border-radius;
+                border-radius: $nav-border-radius $nav-border-radius 0 0;
+
+                color: var(--link-hover-color);
+                background-color: var(--hover-color);
+                transition: background-color 0.3s cubic-bezier(0.39, 0.575, 0.565, 1);
+            }
+
+            li {
+                a {
+                    white-space: nowrap;
+                }
+                margin: 0;
+                padding: var(--unit);
+                width: initial;
+                font-weight: initial;
+                text-transform: initial;
+
+                &:hover a ~ ul,
+                &:hover ~ ul:hover {
+                    display: block;
+                }
+                & a ~ ul {
+                    border-radius: 0 0 $nav-border-radius $nav-border-radius;
+                    top: 100%;
+                    left: 0;
+                    position: absolute;
+                    display: none;
+                    animation: fade-in 0.3s;
+                    background-color: var(--hover-color);
+                    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.007), 7px 7px 7px rgba(0, 0, 0, 0.1),
+                        -7px 7px 7px rgba(0, 0, 0, 0.1);
+                    li {
+                        padding: calc(var(--unit) / 2) calc(2 * var(--unit));
+                        display: list-item;
+                    }
+                }
+            }
+        }
+    }
+
     @include for-each-breakpoint() using ($breakpoint) {
         &.nav-#{$breakpoint} {
             display: flex;
@@ -132,7 +181,7 @@ nav {
                 & > li:hover {
                     // border-radius: $nav-border-radius;
                     border-radius: $nav-border-radius $nav-border-radius 0 0;
-    
+
                     color: var(--link-hover-color);
                     background-color: var(--hover-color);
                     transition: background-color 0.3s cubic-bezier(0.39, 0.575, 0.565, 1);
@@ -147,7 +196,7 @@ nav {
                     width: initial;
                     font-weight: initial;
                     text-transform: initial;
-                   
+
                     &:hover a ~ ul,
                     &:hover ~ ul:hover {
                         display: block;
@@ -160,7 +209,8 @@ nav {
                         display: none;
                         animation: fade-in 0.3s;
                         background-color: var(--hover-color);
-                        box-shadow: 0 5px 5px rgba(0, 0, 0, 0.007), 7px 7px 7px rgba(0, 0, 0, 0.1), -7px 7px 7px rgba(0, 0, 0, 0.1);
+                        box-shadow: 0 5px 5px rgba(0, 0, 0, 0.007), 7px 7px 7px rgba(0, 0, 0, 0.1),
+                            -7px 7px 7px rgba(0, 0, 0, 0.1);
                         li {
                             padding: calc(var(--unit) / 2) calc(2 * var(--unit));
                             display: list-item;

@@ -45,8 +45,8 @@
                     var(--primary-x-offset)
                     var(--primary-blur)
                     rgba(var(--r), var(--g), var(--b), var(--alpha)),
-                    calc(var(--primary-x-offset) * -1)
-                    calc(var(--primary-x-offset) * -1)
+                    calc(-1 * var(--primary-x-offset))
+                    calc(-1 * var(--primary-x-offset))
                     var(--primary-blur)
                     rgba(var(--r), var(--g), var(--b), var(--seconday-alpha))
         } 

@@ -1,17 +1,33 @@
 import { Component } from 'react';
 import './Button.scss';
+import PropTypes from 'prop-types';
 
 class Button extends Component {
+
   render() {
-    const disabled = this.props?.disabled ? this.props?.disabled  : false;
-    const className = this.props?.className ? this.props.className : "btn-primary";
+    const {disabled, onClick, children, tooltip, className} = this.props;
     return <button 
-      className={['btn', className, this.props.color, this.props.size].join(" ")} 
+      data-tooltip-bottom={tooltip}
+      className={['btn', className].join(" ")} 
       disabled={disabled} 
-      onClick={this.props.onClick}>
-        {this.props.text}
+      onClick={onClick}>
+        {children ? children : "Button"}
     </button>;
   }
 }
 
 export default Button;
+
+Button.propTypes = {
+  disabled: PropTypes.bool,
+  className: PropTypes.string,
+  tooltip: PropTypes.string,
+  onClick: PropTypes.func
+}
+
+Button.defaultProps = {
+  disabled: false,
+  className: "primary bold raised",
+  tooltip: null,
+  onClick: ()=>{ console.log("button clicked!"); }
+}
